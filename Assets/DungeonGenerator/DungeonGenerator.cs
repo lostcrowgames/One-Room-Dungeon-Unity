@@ -33,7 +33,7 @@ public class DungeonGenerator : MonoBehaviour
         navMeshGenerator.BakeNavMesh();
 
         // Spawn enemies on the floor blocks
-        EnemySpawner.SpawnEnemies(enemyPrefabs, numberOfEnemies, groundPrefabs);
+        //EnemySpawner.SpawnEnemies(enemyPrefabs, numberOfEnemies, groundPrefabs);
     }
 
     void GenerateFloor()
@@ -77,11 +77,11 @@ public class DungeonGenerator : MonoBehaviour
                             xOffset = -2;
                             if (z == 0)
                             {
-                                cornerRot = Quaternion.Euler(0, 0, 0);
+                                cornerRot = Quaternion.Euler(0, 0, 0); // Back right corner
                             }
                             else
                             {
-                                cornerRot = Quaternion.Euler(0, 0, 0);
+                                cornerRot = Quaternion.Euler(0, 90, 0); // Front right corner
                             }
                         }
                         else if (x == gridSize - 1)
@@ -89,11 +89,11 @@ public class DungeonGenerator : MonoBehaviour
                             xOffset = 2;
                             if (z == 0)
                             {
-                                cornerRot = Quaternion.identity;
+                                cornerRot = Quaternion.Euler(0, -90, 0); // Back left corner
                             }
                             else
                             {
-                                cornerRot = Quaternion.Euler(0, 0, 0);
+                                cornerRot = Quaternion.Euler(0, 180, 0); // Front left corner
                             }
                         }
 
@@ -140,6 +140,7 @@ public class DungeonGenerator : MonoBehaviour
             }
         }
     }
+
 
     void GeneratePillars()
     {
