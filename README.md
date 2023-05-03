@@ -42,3 +42,6 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE.md](LIC
 ## Acknowledgments
 
 These scripts were developed by Robin Cormie @ Lost Crow Games and are provided as-is without any warranty or guarantee of fitness for any particular purpose. Use at your own risk.
+
+## Additional Credits
+This project uses NavMeshComponents, developed by Unity Technologies. You can find the original repository at https://github.com/Unity-Technologies/NavMeshComponents.
