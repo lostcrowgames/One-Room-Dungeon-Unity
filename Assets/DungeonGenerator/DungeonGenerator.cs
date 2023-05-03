@@ -13,8 +13,10 @@ public class DungeonGenerator : MonoBehaviour
 
     private GameObject[,] grid;
 
-    [SerializeField] private int numberOfEnemies = 4;
     [SerializeField] private GameObject[] enemyPrefabs;
+    [SerializeField] private int numberOfEnemies = 4;
+
+    [SerializeField] private NavMeshGenerator navMeshGenerator;
 
     void Start()
     {
@@ -28,7 +30,7 @@ public class DungeonGenerator : MonoBehaviour
         GeneratePillars();
 
         // Bake NavMesh
-        //NavMeshGenerator.BakeNavMesh();
+        navMeshGenerator.BakeNavMesh();
 
         // Spawn enemies on the floor blocks
         EnemySpawner.SpawnEnemies(enemyPrefabs, numberOfEnemies, groundPrefabs);

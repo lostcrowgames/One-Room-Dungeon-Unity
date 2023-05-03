@@ -17,6 +17,8 @@ public static class EnemySpawner
     // Method to randomly spawn enemies on the floor blocks
     public static void SpawnEnemies(GameObject[] groundPrefab, int gridSize, GameObject[] groundPrefabs)
     {
+        Debug.Log("Starting enemy spawner");
+
         // Loop through all the floor blocks
         for (int x = 0; x < gridSize; x++)
         {
@@ -28,8 +30,11 @@ public static class EnemySpawner
                 // Check if the floor block is not a wall or pillar
                 if (groundPrefab[x + z * gridSize] != null)
                 {
+                    Debug.Log("Spawning enemies on floor block at " + floorPos);
+
                     // Calculate the number of enemies to spawn
                     int numEnemies = Random.Range(minEnemies, maxEnemies + 1);
+                    Debug.Log("Spawning " + numEnemies + " enemies");
 
                     // Loop through and spawn each enemy
                     for (int i = 0; i < numEnemies; i++)
@@ -38,11 +43,13 @@ public static class EnemySpawner
                         Vector3 enemyPos = floorPos + new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f));
                         float distance = 0f;
 
-                        // Check if the enemy is too close to another enemy
+                        int maxIterations = 100;
+                        int iterationCount = 0;
                         do
                         {
                             // Calculate a random distance between enemies
                             distance = Random.Range(minDistance, maxDistance);
+                            Debug.Log("Trying to spawn enemy " + i + " at " + enemyPos + " with distance " + distance);
 
                             // Calculate a random direction to move the enemy
                             Vector2 direction = Random.insideUnitCircle.normalized;
@@ -57,21 +64,40 @@ public static class EnemySpawner
                             {
                                 sqrDistance = Mathf.Min(sqrDistance, (enemy.transform.position - enemyPos).sqrMagnitude);
                             }
+                            Debug.Log("Checking distance from existing enemies. Shortest distance is " + sqrDistance);
+
+                            // Increment the iteration count
+                            iterationCount++;
+
+                            // Check if the maximum number of iterations has been reached
+                            if (iterationCount >= maxIterations)
+                            {
+                                Debug.LogWarning("Max iterations reached in enemy spawner");
+                                break;
+                            }
 
                             // Repeat until the enemy is far enough away from all other enemies
                         } while (sqrDistance < distance * distance);
 
                         // Spawn a random enemy prefab at the calculated position
                         GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-                        Instantiate(enemyPrefab, enemyPos, Quaternion.identity);
+
+                        GameObject.Instantiate(enemyPrefab, enemyPos, Quaternion.identity);
+                        Debug.Log("Enemy spawned at position: " + enemyPos);
+
+                        // Check if the new enemy is too close to any other enemy
+                        GameObject[] existingEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+                        foreach (GameObject existingEnemy in existingEnemies)
+                        {
+                            if ((existingEnemy.transform.position - enemyPos).sqrMagnitude < sqrDistance)
+                            {
+                                Debug.LogWarning("New enemy too close to existing enemy");
+                                break;
+                            }
+                        }
                     }
                 }
             }
         }
-    }
-
-    private static void Instantiate(GameObject enemyPrefab, Vector3 enemyPos, Quaternion identity)
-    {
-        throw new System.NotImplementedException();
     }
 }

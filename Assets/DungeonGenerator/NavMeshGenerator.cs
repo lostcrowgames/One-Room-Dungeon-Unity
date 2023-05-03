@@ -8,7 +8,7 @@ public class NavMeshGenerator : MonoBehaviour
     public NavMeshSurface[] navMeshSurfaces;
     public Transform[] objectsToRotate;
 
-    private void Start()
+    public void BakeNavMesh()
     {
         foreach (Transform objectToRotate in objectsToRotate)
         {
