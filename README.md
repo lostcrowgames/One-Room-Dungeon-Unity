@@ -2,7 +2,7 @@
 
 This Unity script generates a one-room dungeon using prefabs for the floor, walls, corners, and pillars. The dungeon is randomly generated, making each playthrough unique. 
 
-![https://f004.backblazeb2.com/file/github-lostcrowgames/2023-05-03_07_57_35-One-Room-Dungeon-Unity-Unity-2021.3.24f.png](https://f004.backblazeb2.com/file/github-lostcrowgames/2023-05-03_07_57_35-One-Room-Dungeon-Unity-Unity-2021.3.24f.png)
+![image](https://user-images.githubusercontent.com/132179334/236115179-c69c37ca-3196-4cc4-8c00-331b8bef23a0.png)
 
 ## Requirements
 
