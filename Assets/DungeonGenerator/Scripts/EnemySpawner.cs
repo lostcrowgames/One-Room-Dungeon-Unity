@@ -73,6 +73,7 @@ public class EnemySpawner : MonoBehaviour
 
             // Instantiate the enemy prefab at the spawn point
             GameObject enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
+            enemy.transform.SetParent(transform); // Set the parent of the spawned object to the parent of the script
 
             // Remove the used spawn point
             groundObjects = groundObjects.Skip(1).ToArray();

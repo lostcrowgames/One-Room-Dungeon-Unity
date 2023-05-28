@@ -201,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 5, y: 22.75, z: 5.0000024}
+  m_LocalPosition: {x: 8, y: 22, z: 7.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -451,11 +451,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 3774093424661569170, guid: 2e1bed46e3cc1f14698cbe44ebe1d27c, type: 3}
-  baseMinEnemies: 1
-  baseMaxEnemies: 3
+  - {fileID: 3774093424661569170, guid: 039c1323b00d6c7449154b70bd6966cd, type: 3}
+  baseMinEnemies: 8
+  baseMaxEnemies: 10
   enemyIncreasePerLevel: 1
-  minDistance: 2
-  maxDistance: 5
+  minDistance: 1
+  maxDistance: 2
   navMeshGenerator: {fileID: 1934020003}
 --- !u!1 &1743806196
 GameObject:
@@ -487,20 +488,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af370c528b4d9ff43944ae282c929517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dungeonSize: 4
-  gridSize: 4
+  gridWidth: 5
+  gridLength: 7
   groundPrefabs:
-  - {fileID: 5167792726821782420, guid: 88a52e025bd2a4140b25adec765c667f, type: 3}
   - {fileID: 5167792726821782420, guid: 211c79136405e304280597d56249f5d3, type: 3}
   pillarPrefabs:
   - {fileID: 881356018887571683, guid: 89f78419b34d3bc49b68c4e392c6751c, type: 3}
-  - {fileID: 881356018887571683, guid: 8d5c8943460107541919164f0ff884da, type: 3}
   wallPrefabs:
-  - {fileID: 2570634350051028023, guid: dc141a4fd7655fc4f882af5aa52a91b7, type: 3}
   - {fileID: 2570634350051028023, guid: 58521bb59bda1c746ad1e98dac5c18ac, type: 3}
   cornerPrefabs:
-  - {fileID: 1810128196650426959, guid: 994d465b35259684dbd333082da6afd0, type: 3}
   - {fileID: 1810128196650426959, guid: be1fd2763a9f0514a84c8e31a30d8367, type: 3}
+  generateDoors: 1
+  doorPrefabs:
+  - {fileID: 2570634350051028023, guid: 1feb17abc3bce08409af7f8e8cd11673, type: 3}
+  doorDirections: 00000000010000000200000003000000
   navMeshGenerator: {fileID: 1934020003}
   enemySpawner: {fileID: 879888418}
 --- !u!4 &1743806198
